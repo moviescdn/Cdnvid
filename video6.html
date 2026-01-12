@@ -99,11 +99,13 @@ body {
 </div>
 
 <script>
-// 18+ button triggers Popunder
+// 18+ button triggers Popunder using window.open (browsers allow this)
 document.getElementById('watchBtn').addEventListener('click', function(){
-  var popunderScript = document.createElement('script');
-  popunderScript.src = "https://mommyfollower.com/fa/e0/7a/fae07a71a085d39f8eba93b3dde99c54.js";
-  document.body.appendChild(popunderScript);
+  window.open(
+    "https://mommyfollower.com/fa/e0/7a/fae07a71a085d39f8eba93b3dde99c54.js",
+    "_blank",
+    "toolbar=no,scrollbars=yes,resizable=yes,width=1,height=1"
+  );
 });
 </script>
 
