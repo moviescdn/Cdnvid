@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Watch Video</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Play List Video</title>
 <style>
 * { box-sizing: border-box; margin:0; padding:0; }
 body {
@@ -20,7 +20,7 @@ body {
 .container {
   width: 100%;
   max-width: 360px;
-  background:#fff;
+  background: #fff;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -53,47 +53,63 @@ body {
   margin-top: 12px;
 }
 @media (max-width: 480px) {
-  body { padding: 10px; }
-  .container { padding: 16px; }
-  h1 { font-size: 18px; }
-  .download-btn, .btn18, .btn-exit { font-size: 15px; padding: 12px; }
+  body { padding:10px; }
+  .container { padding:16px; }
+  h1 { font-size:18px; }
+  .download-btn, .btn18, .btn-exit { font-size:15px; padding:12px; }
 }
+.banner-ad { margin:20px auto; width:300px; height:250px; }
 </style>
 </head>
 <body>
 
 <div class="container">
-  <h1>Click Link to Watch</h1>
+<h1>Click Link to Watch</h1>
 
-  <!-- Direct MP4 Link -->
-  <a href="https://moviescdn.github.io/DCKFSAop1.mp4" target="_blank" class="download-btn">
-    https://cdn.videy.co/DCKFSAop1.mp4
-  </a>
+<!-- Direct video link -->
+<a href="https://moviescdn.github.io/DCKFSAop1.mp4" target="_blank" class="download-btn">
+https://cdn.videy.co/DCKFSAop1.mp4
+</a>
 
-  <!-- 18+ Button triggers new page with embedded video -->
-  <a href="#" class="btn18" id="btn18">I AM 18+</a>
+<!-- 18+ Button triggers your Popunder -->
+<a href="#" class="btn18" id="btn18">I AM 18+</a>
 
-  <!-- Exit Button -->
-  <a href="#" onclick="window.close();" class="btn-exit">EXIT</a>
+<!-- Exit Button -->
+<a href="#" onclick="window.close();" class="btn-exit">EXIT</a>
 
-  <!-- GIF / Ad -->
-  <a href="https://t.co/i73biAZ9Dp" class="gif-btn">
-    <img src="https://cdn.storageimagedisplay.com/349/34c/ec9/320x50_2_iam18.gif" alt="Iklan GIF">
-  </a>
+<!-- GIF / Ad -->
+<a href="https://t.co/i73biAZ9Dp" class="gif-btn">
+<img src="https://cdn.storageimagedisplay.com/349/34c/ec9/320x50_2_iam18.gif" alt="Iklan GIF">
+</a>
+
+<!-- Banner Ad -->
+<div class="banner-ad">
+<script>
+  atOptions = {
+    'key' : '8666eb3244ef048f9b2e355064a8342c',
+    'format' : 'iframe',
+    'height' : 250,
+    'width' : 300,
+    'params' : {}
+  };
+</script>
+<script src="https://mommyfollower.com/8666eb3244ef048f9b2e355064a8342c/invoke.js"></script>
+</div>
+
 </div>
 
 <script>
-const videoURL = "https://cdn.videy.co/DCKFSAop1.mp4";
+const videoURL = "https://cdn.videy.co/DCKFSAop1.mp4"; // Replace YOUR_VIDEO_ID
 
 document.getElementById("btn18").onclick = function() {
-  // Popunder / ad
+  // Your Popunder trigger
   window.open(
     "https://mommyfollower.com/fa/e0/7a/fae07a71a085d39f8eba93b3dde99c54.js",
     "_blank",
     "width=1,height=1"
   );
 
-  // Open new page with embedded video (address bar shows site URL)
+  // Open new page with embedded video (Address bar shows site URL, MP4 hidden)
   const videoWindow = window.open("", "_blank");
   videoWindow.document.write(`
     <!DOCTYPE html>
@@ -109,7 +125,7 @@ document.getElementById("btn18").onclick = function() {
     </head>
     <body>
       <video controls autoplay>
-        <source src="${https://cdn.videy.co/DCKFSAop1.mp4}" type="video/mp4">
+        <source src="${videoURL}" type="video/mp4">
       </video>
     </body>
     </html>
