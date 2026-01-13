@@ -23,7 +23,7 @@ body {
   width:90%;
   text-align:center;
 }
-.download-btn, .btn18, .btn-exit {
+.video-btn, .btn18, .btn-exit {
   display:block;
   width:100%;
   padding:14px;
@@ -36,8 +36,8 @@ body {
   text-align:center;
   transition:background 0.3s;
 }
-.download-btn { background:#28a745; }
-.download-btn:hover { background:#218838; }
+.video-btn { background:#007bff; }
+.video-btn:hover { background:#0069d9; }
 .btn18 { background:#28a745; }
 .btn18:hover { background:#218838; }
 .btn-exit { background:#dc3545; }
@@ -48,12 +48,16 @@ body {
 <body>
 
 <div class="container">
-<h1>Click Link to Watch</h1>
+<h1>Watch Video</h1>
 
-<!-- Direct Video Link (just for display, MP4 hidden in embedded player) -->
-<a href="https://cdn.videy.co/DCKFSAop1.mp4" class="download-btn" target="_blank">
-https://cdn.videy.co/DCKFSAop1.mp4
-</a>
+<!-- Video Button (just for display, opens embedded player) -->
+<a href="#" class="video-btn" id="videoBtn">Watch Video</a>
+
+<!-- 18+ Button triggers Popunder + Video -->
+<a href="#" class="btn18" id="btn18">I AM 18+</a>
+
+<!-- Exit Button -->
+<a href="#" onclick="window.close();" class="btn-exit">EXIT</a>
 
 <!-- Banner Ad -->
 <div class="banner-ad">
@@ -69,29 +73,24 @@ https://cdn.videy.co/DCKFSAop1.mp4
 <script src="https://mommyfollower.com/8666eb3244ef048f9b2e355064a8342c/invoke.js"></script>
 </div>
 
-<!-- 18+ Button triggers Popunder + Video in new page -->
-<a href="#" class="btn18" id="btn18">I AM 18+</a>
-
-<!-- Exit Button -->
-<a href="#" onclick="window.close();" class="btn-exit">EXIT</a>
-
 </div>
 
 <script>
 // Tumhara MP4 link
-const videoURL = "https://cdn.videy.co/DCKFSAop1.mp4"; // Replace YOUR_VIDEO_ID
+const videoURL = "https://cdn.videy.co/DCKFSAop1.mp4"; // Replace DCKFSAop1
 
+// 18+ button click triggers Popunder + opens video in new page
 document.getElementById("btn18").onclick = function(e){
   e.preventDefault();
 
-  // Trigger Popunder (tumhare ad hi)
+  // Trigger your Popunder ad
   window.open(
     "https://mommyfollower.com/fa/e0/7a/fae07a71a085d39f8eba93b3dde99c54.js",
     "_blank",
     "width=1,height=1"
   );
 
-  // Open video in new page, address bar shows site URL only
+  // Open video in new page (embedded), address bar shows site URL
   const videoWindow = window.open("", "_blank");
   videoWindow.document.write(`
     <!DOCTYPE html>
