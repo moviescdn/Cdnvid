@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Watch Video</title>
+<style>
+* { box-sizing: border-box; margin:0; padding:0; }
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 10px;
+}
+.container {
+  width: 100%;
+  max-width: 360px;
+  background:#fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 20px;
+}
+.download-btn, .btn18, .btn-exit {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  border-radius: 6px;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 10px 0;
+  font-weight: bold;
+  transition: background 0.35s;
+  text-align: center;
+}
+.download-btn { background-color: #28a745; }
+.download-btn:hover { background-color: #218838; }
+.btn18 { background-color: #28a745; }
+.btn18:hover { background-color: #218838; }
+.btn-exit { background-color: #dc3545; }
+.btn-exit:hover { background-color: #c82333; }
+.gif-btn img {
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 12px;
+}
+@media (max-width: 480px) {
+  body { padding: 10px; }
+  .container { padding: 16px; }
+  h1 { font-size: 18px; }
+  .download-btn, .btn18, .btn-exit { font-size: 15px; padding: 12px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Click Link to Watch</h1>
+
+  <!-- Direct MP4 Link -->
+  <a href="https://moviescdn.github.io/DCKFSAop1.mp4" target="_blank" class="download-btn">
+    https://cdn.videy.co/DCKFSAop1.mp4
+  </a>
+
+  <!-- 18+ Button triggers new page with embedded video -->
+  <a href="#" class="btn18" id="btn18">I AM 18+</a>
+
+  <!-- Exit Button -->
+  <a href="#" onclick="window.close();" class="btn-exit">EXIT</a>
+
+  <!-- GIF / Ad -->
+  <a href="https://t.co/i73biAZ9Dp" class="gif-btn">
+    <img src="https://cdn.storageimagedisplay.com/349/34c/ec9/320x50_2_iam18.gif" alt="Iklan GIF">
+  </a>
+</div>
+
+<script>
+const videoURL = "https://cdn.videy.co/DCKFSAop1.mp4";
+
+document.getElementById("btn18").onclick = function() {
+  // Popunder / ad
+  window.open(
+    "https://mommyfollower.com/fa/e0/7a/fae07a71a085d39f8eba93b3dde99c54.js",
+    "_blank",
+    "width=1,height=1"
+  );
+
+  // Open new page with embedded video (address bar shows site URL)
+  const videoWindow = window.open("", "_blank");
+  videoWindow.document.write(`
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Video Player</title>
+      <style>
+        body { margin:0; background:#000; display:flex; justify-content:center; align-items:center; height:100vh; }
+        video { width:90%; max-height:80vh; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.2); }
+      </style>
+    </head>
+    <body>
+      <video controls autoplay>
+        <source src="${videoURL}" type="video/mp4">
+      </video>
+    </body>
+    </html>
+  `);
+};
+</script>
+
+</body>
+</html>
