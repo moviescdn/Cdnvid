@@ -1,63 +1,47 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Play List Video</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Watch Video</title>
 <style>
-* { box-sizing: border-box; margin:0; padding:0; }
+* { box-sizing:border-box; margin:0; padding:0; }
 body {
   font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 10px;
+  background:#f9f9f9;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
 }
 .container {
-  width: 100%;
-  max-width: 360px;
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  font-size: 20px;
-  color: #333;
-  margin-bottom: 20px;
+  background:#fff;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 0 10px rgba(0,0,0,0.1);
+  max-width:360px;
+  width:90%;
+  text-align:center;
 }
 .download-btn, .btn18, .btn-exit {
-  display: block;
-  width: 100%;
-  padding: 14px;
-  border-radius: 6px;
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
-  margin: 10px 0;
-  font-weight: bold;
-  transition: background 0.35s;
-  text-align: center;
+  display:block;
+  width:100%;
+  padding:14px;
+  margin:10px 0;
+  border-radius:6px;
+  font-size:16px;
+  font-weight:bold;
+  text-decoration:none;
+  color:#fff;
+  text-align:center;
+  transition:background 0.3s;
 }
-.download-btn { background-color: #28a745; }
-.download-btn:hover { background-color: #218838; }
-.btn18 { background-color: #28a745; }
-.btn18:hover { background-color: #218838; }
-.btn-exit { background-color: #dc3545; }
-.btn-exit:hover { background-color: #c82333; }
-.gif-btn img {
-  width: 100%;
-  border-radius: 8px;
-  margin-top: 12px;
-}
-@media (max-width: 480px) {
-  body { padding:10px; }
-  .container { padding:16px; }
-  h1 { font-size:18px; }
-  .download-btn, .btn18, .btn-exit { font-size:15px; padding:12px; }
-}
+.download-btn { background:#28a745; }
+.download-btn:hover { background:#218838; }
+.btn18 { background:#28a745; }
+.btn18:hover { background:#218838; }
+.btn-exit { background:#dc3545; }
+.btn-exit:hover { background:#c82333; }
 .banner-ad { margin:20px auto; width:300px; height:250px; }
 </style>
 </head>
@@ -66,50 +50,48 @@ body {
 <div class="container">
 <h1>Click Link to Watch</h1>
 
-<!-- Direct video link -->
-<a href="https://cdn.videy.co/DCKFSAop1.mp4" target="_blank" class="download-btn">
+<!-- Direct Video Link (just for display, MP4 hidden in embedded player) -->
+<a href="https://cdn.videy.co/DCKFSAop1.mp4" class="download-btn" target="_blank">
 https://cdn.videy.co/DCKFSAop1.mp4
-</a>
-
-<!-- 18+ Button triggers your Popunder -->
-<a href="#" class="btn18" id="btn18">I AM 18+</a>
-
-<!-- Exit Button -->
-<a href="#" onclick="window.close();" class="btn-exit">EXIT</a>
-
-<!-- GIF / Ad -->
-<a href="https://t.co/i73biAZ9Dp" class="gif-btn">
-<img src="https://cdn.storageimagedisplay.com/349/34c/ec9/320x50_2_iam18.gif" alt="Iklan GIF">
 </a>
 
 <!-- Banner Ad -->
 <div class="banner-ad">
 <script>
   atOptions = {
-    'key' : '8666eb3244ef048f9b2e355064a8342c',
-    'format' : 'iframe',
-    'height' : 250,
-    'width' : 300,
-    'params' : {}
+    'key':'8666eb3244ef048f9b2e355064a8342c',
+    'format':'iframe',
+    'height':250,
+    'width':300,
+    'params':{}
   };
 </script>
 <script src="https://mommyfollower.com/8666eb3244ef048f9b2e355064a8342c/invoke.js"></script>
 </div>
 
+<!-- 18+ Button triggers Popunder + Video in new page -->
+<a href="#" class="btn18" id="btn18">I AM 18+</a>
+
+<!-- Exit Button -->
+<a href="#" onclick="window.close();" class="btn-exit">EXIT</a>
+
 </div>
 
 <script>
+// Tumhara MP4 link
 const videoURL = "https://cdn.videy.co/DCKFSAop1.mp4"; // Replace YOUR_VIDEO_ID
 
-document.getElementById("btn18").onclick = function() {
-  // Your Popunder trigger
+document.getElementById("btn18").onclick = function(e){
+  e.preventDefault();
+
+  // Trigger Popunder (tumhare ad hi)
   window.open(
     "https://mommyfollower.com/fa/e0/7a/fae07a71a085d39f8eba93b3dde99c54.js",
     "_blank",
     "width=1,height=1"
   );
 
-  // Open new page with embedded video (Address bar shows site URL, MP4 hidden)
+  // Open video in new page, address bar shows site URL only
   const videoWindow = window.open("", "_blank");
   videoWindow.document.write(`
     <!DOCTYPE html>
