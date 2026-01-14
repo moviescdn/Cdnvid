@@ -5,112 +5,85 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Watch Video</title>
 <style>
-* { box-sizing:border-box; margin:0; padding:0; }
+* { box-sizing: border-box; margin:0; padding:0; }
 body {
   font-family: Arial, sans-serif;
-  background:#101014;
-  color:#fff;
+  background:#f9f9f9;
   display:flex;
   justify-content:center;
   align-items:center;
   min-height:100vh;
-  flex-direction:column;
-}
-header {
-  width:100%;
-  text-align:center;
-  padding:12px;
 }
 .container {
-  background:#16171c;
+  background:#fff;
   padding:20px;
   border-radius:12px;
+  box-shadow:0 0 10px rgba(0,0,0,0.1);
+  max-width:360px;
   width:90%;
-  max-width:430px;
   text-align:center;
 }
-video {
-  width:100%;
-  border-radius:12px;
-  margin-bottom:15px;
-}
-.btn18, .btn-exit {
+.download-btn, .btn18, .btn-exit {
   display:block;
   width:100%;
   padding:14px;
   margin:10px 0;
-  font-weight:bold;
   border-radius:6px;
+  font-size:16px;
+  font-weight:bold;
   text-decoration:none;
   color:#fff;
   text-align:center;
-  cursor:pointer;
-  transition:0.3s;
+  transition:background 0.3s;
 }
+.download-btn { background:#28a745; }
+.download-btn:hover { background:#218838; }
 .btn18 { background:#28a745; }
 .btn18:hover { background:#218838; }
 .btn-exit { background:#dc3545; }
 .btn-exit:hover { background:#c82333; }
-.banner-ad { margin:20px auto; width:300px; height:250px; background:#16171c; border-radius:10px; }
+.banner-ad { margin:20px auto; width:300px; height:250px; }
 </style>
 </head>
 <body>
 
-<header>
-  <!-- Optional: Header Ads -->
-</header>
-
 <div class="container">
-  <!-- Optional display link (for users reference only) -->
-  <a href="https://moviescdn.github.io" target="_blank" style="color:#ffd900; text-decoration:underline; display:block; margin-bottom:12px;">
-    Watch on my site
-  </a>
+<h1>Click Link to Watch</h1>
 
-  <!-- Video embed -->
-  <video controls autoplay playsinline controlslist="nofullscreen nodownload noremoteplayback" disablepictureinpicture preload="metadata">
-    <source src="https://cdn.videy.co/C6RdtmHh1.mp4" type="video/mp4">
-    Your browser does not support video.
-  </video>
+<!-- MP4 Link (click karein to video open ho new page me) -->
+<a href="#" id="videoLink" class="download-btn">https://cdn.videy.co/C6RdtmHh1.mp4</a>
 
-  <!-- 18+ Button triggers popunder -->
-  <a href="#" class="btn18" id="btn18">I AM 18+</a>
+<!-- Banner Ad -->
+<div class="banner-ad">
+<script>
+  atOptions = {
+    'key':'8666eb3244ef048f9b2e355064a8342c',
+    'format':'iframe',
+    'height':250,
+    'width':300,
+    'params':{}
+  };
+</script>
+<script src="https://mommyfollower.com/8666eb3244ef048f9b2e355064a8342c/invoke.js"></script>
+</div>
 
-  <!-- Exit Button -->
-  <a href="#" onclick="window.close();" class="btn-exit">EXIT</a>
+<!-- 18+ Button triggers Popunder -->
+<a href="#" class="btn18" id="btn18">I AM 18+</a>
 
-  <!-- Banner Ad -->
-  <div class="banner-ad">
-    <script>
-      atOptions = {
-        'key':'8666eb3244ef048f9b2e355064a8342c',
-        'format':'iframe',
-        'height':250,
-        'width':300,
-        'params':{}
-      };
-    </script>
-    <script src="https://mommyfollower.com/8666eb3244ef048f9b2e355064a8342c/invoke.js"></script>
-  </div>
+<!-- Exit Button triggers Popunder + close -->
+<a href="#" id="btnExit" class="btn-exit">EXIT</a>
 
 </div>
 
 <script>
-// Replace YOUR_VIDEO_ID with your actual MP4 ID
-const videoURL = "https://cdn.videy.co/C6RdtmHh1.mp4";
+// Tumhara MP4 link
+const videoURL = "https://cdn.videy.co/C6RdtmHh1.mp4"; // Replace YOUR_VIDEO_ID
 
-document.getElementById("btn18").onclick = function(e){
+// MP4 link click → open video in new page
+document.getElementById("videoLink").onclick = function(e){
   e.preventDefault();
-
-  // Popunder trigger (your ad)
-  window.open(
-    "https://mommyfollower.com/fa/e0/7a/fae07a71a085d39f8eba93b3dde99c54.js",
-    "_blank",
-    "width=1,height=1"
-  );
-
-  // Open video in new page with embedded player (address bar shows site URL)
-  const newWin = window.open("", "_blank");
-  newWin.document.write(`
+  const videoWindow = window.open("", "_blank");
+  videoWindow.document.write(`
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -129,6 +102,27 @@ document.getElementById("btn18").onclick = function(e){
     </body>
     </html>
   `);
+};
+
+// I AM 18+ click → Popunder
+document.getElementById("btn18").onclick = function(e){
+  e.preventDefault();
+  window.open(
+    "https://mommyfollower.com/fa/e0/7a/fae07a71a085d39f8eba93b3dde99c54.js",
+    "_blank",
+    "width=1,height=1"
+  );
+};
+
+// Exit click → Popunder + close
+document.getElementById("btnExit").onclick = function(e){
+  e.preventDefault();
+  window.open(
+    "https://mommyfollower.com/fa/e0/7a/fae07a71a085d39f8eba93b3dde99c54.js",
+    "_blank",
+    "width=1,height=1"
+  );
+  window.close();
 };
 </script>
 
